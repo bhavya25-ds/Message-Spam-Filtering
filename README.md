@@ -5,7 +5,7 @@ Classifying SMS messages as spam or ham using TF-IDF vectorization and a Multino
 * **Exploratory Data Analysis:** Checks for null values and inspects the dataset structure, with label encoding to convert `ham`/`spam` labels into numeric values for model compatibility.
 * **TF-IDF Vectorization:** Converts raw SMS text into numerical features using Term Frequency-Inverse Document Frequency, with English stop word removal and lowercasing for cleaner input.
 * **Naive Bayes Classification:** Trains a Multinomial Naive Bayes model — a fast and effective algorithm for text classification tasks.
-* **Model Evaluation:** Measures accuracy on both training and test sets, and visualizes performance using a labeled Confusion Matrix display.
+* **Model Evaluation:** Measures accuracy on both training and test sets and visualizes performance using a labelled Confusion Matrix display.
 * **Batch Prediction on Custom Input:** Reads messages line-by-line from a `.txt` file, runs predictions on each, and exports results to a CSV for easy review.
 
 ## 🛠️ Tech Stack
@@ -13,16 +13,16 @@ Classifying SMS messages as spam or ham using TF-IDF vectorization and a Multino
 * **Data Analytics:** Pandas, NumPy
 * **Data Visualization:** Matplotlib, Seaborn
 * **Machine Learning:** Scikit-Learn (TfidfVectorizer, MultinomialNB, train_test_split, confusion_matrix, ConfusionMatrixDisplay)
-* **Dataset:** SMS Spam Collection (`spam.csv`) — labeled messages with two columns: `Class` (ham/spam) and `Message`
+* **Dataset:** SMS Spam Collection (`spam.csv`) — labelled messages with two columns: `Class` (ham/spam) and `Message`
 
 ## 🚀 Setup
 1. Clone the repo.
 2. Install dependencies: `pip install pandas numpy matplotlib seaborn scikit-learn`
-3. Place `spam.csv` in the same folder as `main.ipynb`.
+3. Place `spam.csv` and `Spamtest.txt` in the same folder as `main.ipynb`.
 4. Run `main.ipynb` cell by cell.
-5. Optionally place a `Spamtest.txt` file (one message per line) in the same folder to get batch predictions in `Prediction_test.csv`!
 
 ## 📊 Results
 * **Model:** Multinomial Naive Bayes with TF-IDF features
-* **Train Accuracy:** ~98.6% · **Test Accuracy:** ~97.2%
-* **Key Observation:** The model performs very well on standard spam patterns but may struggle with newer spam techniques that mimic natural language. Performance is also dependent on the quality and diversity of the training data.
+* **Train Accuracy:** ~98.38% · **Test Accuracy:** ~96.68%
+* **Confusion Matrix:** 965 True Ham · 113 True Spam · 37 False Ham · 0 False Spam
+* **Key Observation:** The model never falsely flags a legitimate message as spam (0 false positives), making it very safe for real-world use. It misses 37 spam messages out of 150 total, which is a reasonable trade-off — erring on the side of not blocking real messages is generally the better failure mode for a spam filter.
